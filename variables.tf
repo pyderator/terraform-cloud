@@ -1,6 +1,6 @@
 variable "region" {
   default = "us-east-1"
-  type    = map(string)
+  type    = string
 
 }
 variable "tags" {
