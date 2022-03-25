@@ -27,6 +27,11 @@ jobs:
           EOF
           fi
 
+      - name: Show variable file
+        run: cat variables.tf
+
+
+
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
         with:
