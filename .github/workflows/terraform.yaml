@@ -3,16 +3,13 @@ name: "Terraform"
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
 
 jobs:
   terraform:
     name: "Terraform"
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./qa
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -21,14 +18,19 @@ jobs:
         run: |
           if [ -f "variables.tf" ]; then
             cat > variables.tf <<EOF
-            ${{secrets.QA_VARIABLES}}
-            EOF
+          ${{secrets.VARIABLES}}
+          EOF
           else
             touch variables.tf
             cat > variables.tf <<EOF
-            ${{secrets.QA_VARIABLES}}
-            EOF
+          ${{secrets.VARIABLES}}
+          EOF
           fi
+
+      - name: Show variable file
+        run: cat variables.tf
+
+
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
