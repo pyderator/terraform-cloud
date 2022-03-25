@@ -18,12 +18,12 @@ jobs:
         run: |
           if [ -f "variables.tf" ]; then
             cat > variables.tf <<EOF
-            ${{secrets.VARIABLES}}
+          ${{secrets.VARIABLES}}
           EOF
           else
             touch variables.tf
             cat > variables.tf <<EOF
-            ${{secrets.VARIABLES}}
+          ${{secrets.VARIABLES}}
           EOF
           fi
 
