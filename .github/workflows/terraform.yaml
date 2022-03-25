@@ -19,12 +19,12 @@ jobs:
           if [ -f "variables.tf" ]; then
             cat > variables.tf <<EOF
             ${{secrets.VARIABLES}}
-            EOF
+          EOF
           else
             touch variables.tf
             cat > variables.tf <<EOF
             ${{secrets.VARIABLES}}
-            EOF
+          EOF
           fi
 
       - name: Setup Terraform
